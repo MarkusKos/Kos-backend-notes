@@ -4,6 +4,9 @@ const express = require("express");
 const fs = require("fs");
 const cors = require("cors");
 const app = express();
+const nocache = require("nocache");
+
+app.use(nocache());
 
 // разрешили запросы с других сайтов
 app.use(cors());
