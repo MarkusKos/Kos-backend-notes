@@ -20,7 +20,7 @@ app.get("/", (req, res) => {
     });
 });
 
-app.post("/",(req,res) => {
+app.post("/", cors(), (req,res) => {
     let data = JSON.stringify(req.body);
     fs.writeFile(__dirname + "/notes.json", data, (err) => {
         if(err) return res.json({status:"fail", message:"Не удалось сохранить"});
@@ -28,6 +28,8 @@ app.post("/",(req,res) => {
     });
 });
 
-app.listen(9000, () => {
+const port = process.env.PORT || 9000;
+
+app.listen(port, () => {
    console.log("Сервер запущен!");
 });
